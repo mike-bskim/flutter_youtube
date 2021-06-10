@@ -1,6 +1,6 @@
 # flutter_youtube
 
-A new Flutter application with GetX.
+Flutter application - youtube clone coding with GetX.
 
 ## Getting Started
 
