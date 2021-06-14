@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'binding/init_binding.dart';
+import 'controller/app_controller.dart';
 import 'src/app.dart';
 
 
@@ -21,10 +23,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: App(),
+//      home: App(),
+      initialBinding: InitBinding(),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => App()),
+        GetPage(name: '/', page: () => App(),
+        ),
       ],
     );
   }
