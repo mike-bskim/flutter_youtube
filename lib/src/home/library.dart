@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Explore extends StatelessWidget {
+class Library extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text('Explore'),
+        child: Text('Library'),
       ),
     );
   }

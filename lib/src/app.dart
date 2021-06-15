@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_youtube/src/controller/app_controller.dart';
+import 'package:flutter_youtube/src/home/explore.dart';
+import 'package:flutter_youtube/src/home/home.dart';
+import 'package:flutter_youtube/src/home/library.dart';
+import 'package:flutter_youtube/src/home/subscribe.dart';
 import 'package:get/get.dart';
 
-import 'controller/app_controller.dart';
 
 // class App extends StatelessWidget {
 class App extends GetView<AppController> {
@@ -11,9 +15,26 @@ class App extends GetView<AppController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Youtube Clone App')),
-      ),
+      body: Obx(() {
+        switch(RouteName.values[controller.currentIndex.value]){
+
+          case RouteName.Home:
+            return Home();
+//            break;
+          case RouteName.Explore:
+            return Explore();
+//            break;
+          case RouteName.Subscribe:
+            return Subscribe();
+//            break;
+          case RouteName.Library:
+            return Library();
+//            break;
+          case RouteName.Add: // 7:10 근처.
+            return Container();
+//            break;
+        }
+      }),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
