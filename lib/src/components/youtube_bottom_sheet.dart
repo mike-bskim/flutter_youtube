@@ -27,8 +27,8 @@ class YoutubeBottomSheet extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 50,
-            height: 50,
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
                 shape: BoxShape.circle, color: Colors.grey.withOpacity(0.3)),
             child: Center(
@@ -55,7 +55,7 @@ class YoutubeBottomSheet extends StatelessWidget {
           topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       child: Container(
         padding: const EdgeInsets.only(left: 20),
-        height: 200,
+        height: 180,
         color: Colors.white,
         child: Column(
           children: [

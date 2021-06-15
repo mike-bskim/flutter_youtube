@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube/src/app.dart';
+import 'package:flutter_youtube/src/binding/init_binding.dart';
+import 'package:flutter_youtube/src/components/youtube_detail.dart';
 import 'package:get/get.dart';
 
-import 'src/app.dart';
-import 'src/binding/init_binding.dart';
 
 
 void main() {
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
       initialBinding: InitBinding(),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => App(),
-        ),
+        GetPage(name: '/', page: () => App(),),
+        GetPage(name: '/detail/:videoId', page: () => YoutubeDetail(),),
       ],
     );
   }

@@ -33,10 +33,11 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         CircleAvatar(
-          backgroundColor: Colors.grey.withOpacity(0.5),
-          backgroundImage: Image.network(
-                  'https://yt3.ggpht.com/ytc/AAUvwniU0ZOGv47lDdGSQ8H004fQgwOAJRlobuCvXwNl=s88-c-k-c0x00ffffff-no-rj')
-              .image,
+          backgroundColor: Colors.grey.withOpacity(0.9),
+          backgroundImage: Image.asset('assets/images/avatar.jpg').image,
+//          Image.network(
+//                  'https://yt3.ggpht.com/ytc/AAUvwniU0ZOGv47lDdGSQ8H004fQgwOAJRlobuCvXwNl=s88-c-k-c0x00ffffff-no-rj')
+//              .image,
         ),
       ],
     );
