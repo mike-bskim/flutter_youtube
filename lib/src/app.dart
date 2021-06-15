@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_youtube/controller/app_controller.dart';
 import 'package:get/get.dart';
+
+import 'controller/app_controller.dart';
 
 // class App extends StatelessWidget {
 class App extends GetView<AppController> {

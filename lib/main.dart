@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'binding/init_binding.dart';
-import 'controller/app_controller.dart';
 import 'src/app.dart';
+import 'src/binding/init_binding.dart';
 
 
 void main() {
