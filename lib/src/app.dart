@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_youtube/src/controller/app_controller.dart';
-import 'package:flutter_youtube/src/home/explore.dart';
-import 'package:flutter_youtube/src/home/home.dart';
-import 'package:flutter_youtube/src/home/library.dart';
-import 'package:flutter_youtube/src/home/subscribe.dart';
+import 'package:flutter_youtube/src/pages/explore.dart';
+import 'package:flutter_youtube/src/pages/home.dart';
+import 'package:flutter_youtube/src/pages/library.dart';
+import 'package:flutter_youtube/src/pages/subscribe.dart';
 import 'package:get/get.dart';
 
 
@@ -15,9 +15,9 @@ class App extends GetView<AppController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ignore: missing_return
       body: Obx(() {
         switch(RouteName.values[controller.currentIndex.value]){
-
           case RouteName.Home:
             return Home();
 //            break;
