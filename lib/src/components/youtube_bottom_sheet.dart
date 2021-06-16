@@ -25,6 +25,7 @@ class YoutubeBottomSheet extends StatelessWidget {
     return InkWell(
       onTap: onTap(),
       child: Row(
+//        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 40,
