@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube/src/models/video.dart';
+import 'package:intl/intl.dart';
 
 class VideoWidget extends StatelessWidget {
+  final Video video;
+
+  const VideoWidget({Key? key, required this.video}) : super(key: key);
+
   Widget _thumbnail() {
     return Container(
       height: 250,
       color: Colors.grey.withOpacity(0.5),
+      child: Image.network(
+        video.snippet!.thumbnails!.medium!.url!,
+        fit: BoxFit.fitWidth,
+      ),
     );
   }
 
   Widget _simpleDetailInfo() {
     return Container(
 //      color: Colors.pinkAccent,
-      padding: const EdgeInsets.only(left: 10,),
+      padding: const EdgeInsets.only(
+        left: 10,
+      ),
       child: Row(
         children: [
           CircleAvatar(
@@ -34,7 +46,10 @@ class VideoWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(child: Text('개남 유투브 다시 보기개남 유투브 다시 보기개남 유투브 다시 보기', maxLines: 2 ,)),
+                    Expanded(
+                        child: Text(video.snippet!.title!,
+                      maxLines: 2,
+                    )),
                     IconButton(
                       alignment: Alignment.topCenter,
                       icon: Icon(Icons.more_vert, size: 18),
@@ -47,25 +62,17 @@ class VideoWidget extends StatelessWidget {
 //                color: Colors.blue,
                 child: Row(
                   children: [
-                    Text(
-                      '홍이장군',
-                      style: TextStyle(
-                          fontSize: 14, color: Colors.black.withOpacity(0.8)
-                      ),
+                    Text(video.snippet!.channelTitle!,
+                      style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.8)),
                     ),
                     Text(' / '),
                     Text(
                       '조회수 1000회',
-                      style: TextStyle(
-                          fontSize: 12, color: Colors.black.withOpacity(0.6)
-                      ),
+                      style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.6)),
                     ),
                     Text(' / '),
-                    Text(
-                      '2021-06-16',
-                      style: TextStyle(
-                          fontSize: 12, color: Colors.black.withOpacity(0.8)
-                      ),
+                    Text(DateFormat('yyyy-MM-dd').format(video.snippet!.publishTime!),
+                      style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.8)),
                     ),
                   ],
                 ),
