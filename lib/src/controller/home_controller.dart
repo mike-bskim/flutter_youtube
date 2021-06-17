@@ -14,13 +14,13 @@ class HomeController extends GetxController {
   }
 
   void _videoLoad() async {
-    YoutubeVideoResult youtubeVideoResult = await YoutubeRepository.to.loadVideos();
+    YoutubeVideoResult? youtubeVideoResult = await YoutubeRepository.to.loadVideos();
 
-    if (//youtubeVideoResult != null &&
+    if (youtubeVideoResult != null &&
         youtubeVideoResult.items != null &&
         youtubeVideoResult.items!.length > 0) {
       youtubeResult(youtubeVideoResult);
+      print(youtubeVideoResult.items!.length);
     }
-    print(youtubeVideoResult.items!.length);
   }
 }
