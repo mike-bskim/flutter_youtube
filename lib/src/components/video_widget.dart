@@ -15,6 +15,7 @@ class VideoWidget extends StatefulWidget {
 
 class _VideoWidgetState extends State<VideoWidget> {
   VideoController? _videoController;
+
   @override
   void initState() {
     _videoController = Get.put(VideoController(video: widget.video), tag: widget.video.id!.videoId);
@@ -40,13 +41,13 @@ class _VideoWidgetState extends State<VideoWidget> {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey.withOpacity(0.9),
-            backgroundImage: Image.asset('assets/images/avatar.jpg').image,
-//          Image.network(
-//                  'https://yt3.ggpht.com/ytc/AAUvwniU0ZOGv47lDdGSQ8H004fQgwOAJRlobuCvXwNl=s88-c-k-c0x00ffffff-no-rj')
-//              .image,
+          Obx(
+            () => CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey.withOpacity(0.9),
+              backgroundImage: //Image.asset('assets/images/avatar.jpg').image,
+                  Image.network(_videoController!.youtuberThumbnailUrl).image,
+            ),
           ),
           SizedBox(
             width: 10,
@@ -61,7 +62,8 @@ class _VideoWidgetState extends State<VideoWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                        child: Text(widget.video.snippet!.title!,
+                        child: Text(
+                      widget.video.snippet!.title!,
                       maxLines: 2,
                     )),
                     IconButton(
@@ -76,17 +78,21 @@ class _VideoWidgetState extends State<VideoWidget> {
 //                color: Colors.blue,
                 child: Row(
                   children: [
-                    Text(widget.video.snippet!.channelTitle!,
+                    Text(
+                      widget.video.snippet!.channelTitle!,
                       style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.8)),
                     ),
                     Text(' / '),
-                    Obx(()=>Text(
-                      _videoController!.viewCountString,
+                    Obx(
+                      () => Text(
+                        _videoController!.viewCountString,
 //                      '조회수 ${_videoController!.statistics.value.viewCount} 회',
-                      style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.6)),
-                    ),),
+                        style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
                     Text(' / '),
-                    Text(DateFormat('yyyy-MM-dd').format(widget.video.snippet!.publishTime!),
+                    Text(
+                      DateFormat('yyyy-MM-dd').format(widget.video.snippet!.publishTime!),
                       style: TextStyle(fontSize: 12, color: Colors.black.withOpacity(0.8)),
                     ),
                   ],
