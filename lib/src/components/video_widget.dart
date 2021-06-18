@@ -19,7 +19,7 @@ class _VideoWidgetState extends State<VideoWidget> {
 
   @override
   void initState() {
-    print('video_widget >> initState');
+//    print('video_widget >> initState');
     _videoController = Get.put(VideoController(video: widget.video), tag: widget.video.id!.videoId);
     super.initState();
   }
@@ -122,7 +122,7 @@ class _VideoWidgetState extends State<VideoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print('video_widget >> build');
+//    print('video_widget >> build');
     return Container(
       child: Column(
         children: [
