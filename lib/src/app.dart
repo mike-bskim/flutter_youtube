@@ -54,11 +54,11 @@ class App extends GetView<AppController> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/svg/icons/compass_off.svg',
-                width: 22,
+                width: 22.0,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/svg/icons/compass_on.svg',
-                width: 22,
+                width: 22.0,
               ),
               label: 'Search',
             ),
@@ -67,7 +67,7 @@ class App extends GetView<AppController> {
                 padding: const EdgeInsets.only(top: 8.0),
                 child: SvgPicture.asset(
                   'assets/svg/icons/plus.svg',
-                  width: 35,
+                  width: 35.0,
                 ),
               ),
               label: '',
