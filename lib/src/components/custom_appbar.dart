@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget {
   Widget _logo() {
@@ -24,7 +25,9 @@ class CustomAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/search');
+            },
             child: Container(
               width: 30,
               height: 30,
