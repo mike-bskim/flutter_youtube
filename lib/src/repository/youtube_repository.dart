@@ -28,6 +28,21 @@ class YoutubeRepository extends GetConnect {
     }
   }
 
+  Future<YoutubeVideoResult?> search(
+      String searchKeyword, String nextPageToken) async {
+    String url =
+        '/youtube/v3/search?part=snippet&maxResults=10&order=date&type=video&videoDefinition=high&key=AIzaSyAi2Rq_uTmtvsbmdJaOdkJlAB7dlQjvv9k&pageToken=$nextPageToken&q=$searchKeyword';
+    final resp = await get(url);
+
+    if (resp.status.hasError) {
+      return Future.error(resp.statusText!);
+    } else {
+      if (resp.body["items"] != null && resp.body["items"].length > 0) {
+        return YoutubeVideoResult.fromJson(resp.body);
+      }
+    }
+  }
+
   Future<Statistics?> getVideoInfoById(String videoId) async {
     String url =
         '/youtube/v3/videos?part=statistics&key=AIzaSyAi2Rq_uTmtvsbmdJaOdkJlAB7dlQjvv9k&id=$videoId';

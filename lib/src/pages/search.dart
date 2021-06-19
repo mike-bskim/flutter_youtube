@@ -1,35 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_youtube/src/components/video_widget.dart';
 import 'package:flutter_youtube/src/controller/youtube_search_controller.dart';
 import 'package:get/get.dart';
 
 class YoutubeSearch extends GetView<YoutubeSearchController> {
   Widget _searchHistory() {
     return ListView(
-      children: List.generate(10, (index) { //controller.history.length
-        return ListTile(
-//          onTap: () {
-//            controller.submitSearch(controller.history[index]);
-//          },
-          leading: SvgPicture.asset(
-            "assets/svg/icons/wall-clock.svg",
-            width: 20,
-          ),
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 3),
-            child: Text('개발하는 남자 $index', //"${controller.history[index]}"
-          )),
-          trailing: Icon(
-            Icons.arrow_forward_ios,
-            size: 15,
-          ),
-        );
-      }),
+        children: List.generate(controller.history.length, (index) {
+          //controller.history.length
+          return ListTile(
+          onTap: () {
+            controller.submitSearch(controller.history[index]);
+          },
+            leading: SvgPicture.asset(
+              "assets/svg/icons/wall-clock.svg",
+              width: 20,
+            ),
+            title: Padding(
+                padding: const EdgeInsets.only(bottom: 3),
+                child: Text(
+                  controller.history[index], //""
+                )),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              size: 15,
+            ),
+          );
+        }),
+    );
+  }
+
+  Widget _searchResultView() {
+    return SingleChildScrollView(
+      controller: controller.scrollController,
+      child: Column(
+        children: List.generate(
+            controller.youtubeVideoResult.value.items!.length, (index) {
+          return GestureDetector(
+            onTap: () {
+              //page route
+              Get.toNamed(
+                  "/detail/${controller.youtubeVideoResult.value.items![index].id!.videoId}");
+            },
+            child: VideoWidget(
+                video: controller.youtubeVideoResult.value.items![index]),
+          );
+        }),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+//    Get.find<YoutubeSearchController>();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -39,8 +63,8 @@ class YoutubeSearch extends GetView<YoutubeSearchController> {
           },
         ),
         title: TextField(
-          onSubmitted: (key) {
-//            controller.submitSearch(key);
+          onSubmitted: (value) {
+            controller.submitSearch(value);
           },
           decoration: InputDecoration(
             filled: true,
@@ -51,13 +75,23 @@ class YoutubeSearch extends GetView<YoutubeSearchController> {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.delete,
+                color: Colors.black.withOpacity(0.5),
+              ),
+              onPressed: () {
+                controller.historyDelete();
+              })
+        ],
       ),
-      body: _searchHistory(),
-//      body: Obx(
-//        () => controller.youtubeVideoResult.value.items.length > 0
-//            ? _searchResultView()
-//            : _searchHistory(),
-//      ),
+//      body: _searchHistory(),
+      body: Obx(
+        () => controller.youtubeVideoResult.value.items!.length > 0
+            ? _searchResultView()
+            : _searchHistory(),
+      ),
     );
   }
 }

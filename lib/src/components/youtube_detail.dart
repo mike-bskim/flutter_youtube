@@ -42,7 +42,11 @@ class YoutubeDetail extends GetView<YoutubeDetailController> {
 
   Widget _buttonOne({required String msg, required String icon}) {
     return Column(
-      children: [SvgPicture.asset('assets/svg/icons/$icon.svg'), Text(msg)],
+      children: [
+        SvgPicture.asset('assets/svg/icons/$icon.svg'), Text(msg),
+//        IconButton(onPressed: Get.back, icon: Icon(Icons.close)),
+      ],
+
     );
   }
 
@@ -57,7 +61,7 @@ class YoutubeDetail extends GetView<YoutubeDetailController> {
       ],
     );
   }
-
+// IconButton(onPressed: Get.back, icon: Icon(Icons.close))
   Widget get oneLine => Container(
         height: 1,
         color: Colors.black.withOpacity(0.2),
@@ -118,15 +122,18 @@ class YoutubeDetail extends GetView<YoutubeDetailController> {
           ),
           oneLine,
           _ownerZone(),
+          oneLine,
+          IconButton(onPressed: Get.back, icon: Icon(Icons.close))
         ],
       ),
     );
   }
 
+  // IconButton(onPressed: Get.back, icon: Icon(Icons.close))
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+//      appBar: AppBar(),
       body: Column(
         children: [
           YoutubePlayer(
